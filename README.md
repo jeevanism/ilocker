@@ -8,6 +8,6 @@ Built on Laravel + BootStrap4 + JQuery(AJAX)
 - One user cannot access another user uploads
 - Public images are displayed at index page 
 - More optimization are coming 
-- 
+- A live Demo of this work : http://jeevanism.com/ilock/public/ 
 
  
