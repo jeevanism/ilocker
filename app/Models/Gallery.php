@@ -10,5 +10,5 @@ class Gallery extends Model
     use HasFactory;
     protected $table="lockerss";
 
-    
+
 }

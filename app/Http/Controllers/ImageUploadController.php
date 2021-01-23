@@ -11,24 +11,24 @@ use DB;
 
 class ImageUploadController extends Controller
 {
-    
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         //
 
        $user_id = Auth::id();
-       $request->validate([    
+       $request->validate([
 
-        'image' => 'required|image|mimes:jpeg,png,jpg|max:2048 '
-          ]);  
+        'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048 '
+          ]);
        $directory = public_path('images').'/'.$user_id;
-       $imageName = time().'.'.$request->image->extension();  
+       $imageName = time().'.'.$request->image->extension();
 
        //move the uploaded file to a directory named as user_id
        $saved = $request->image->move($directory, $imageName);
@@ -37,9 +37,9 @@ class ImageUploadController extends Controller
        $imageUpload = new imageUpload;
        $imageUpload->name=$imageName;
        $imageUpload->path = "images/$user_id/$imageName";
-       $imageUpload->user_id= $user_id; 
+       $imageUpload->user_id= $user_id;
        $imageUpload->save();
-          
+
        return redirect()->route('getajaxupdate',['id' => $user_id])
        ->with('success','You have successfully uploaded image.')
        ->with('image',$imageName)
@@ -49,5 +49,5 @@ class ImageUploadController extends Controller
 
     }
 
-      
+
 }
